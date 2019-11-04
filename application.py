@@ -20,7 +20,7 @@ application = Flask(__name__)
 
 
 
-@server.route('/')
+@application.route('/')
 def index():
     return render_template('base.html')
 
@@ -56,7 +56,7 @@ app.layout = html.Div(children=[
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)  
+    application.run(debug=True)  
 
 
 
