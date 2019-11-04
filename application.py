@@ -13,7 +13,7 @@ import pandas as pd
 from data_clean_up import home_teams
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-server = Flask(__name__)
+application = Flask(__name__)
 
 
 
@@ -26,7 +26,7 @@ def index():
 
 
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets, server=server, routes_pathname_prefix='/dash/')
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets, server=application, routes_pathname_prefix='/dash/')
 app.css.config.serve_locally = True
 
 
