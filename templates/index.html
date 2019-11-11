@@ -4,7 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ML Theory</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static\css\mystyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script> src="static/js/master.js"</script>
 </head>
 
 
@@ -26,16 +31,16 @@
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#portfolio">PORTFOLIO</a></li>
                 <li><a href="#resume">RESUME</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+         
             </ul>
             </div>
         </div>
         </nav>
 
 <!-- HEADER   -->
-<div class="jumbotron text-center", style="background: #38343421;">
-        <h1>Hello, I'm <span style="color:#f4511e">Dimitri Efthimiou</span> </h1> 
-        <p>Welcome to ML Theory!</p> 
+<div class="jumbotron text-center", style="background: #000000;">
+        <h1 style="color: #ffffff;">Hello, I'm <span style="color:#f4511e">Dimitri Efthimiou</span> </h1> 
+        <p style="color: #ffffff;">Welcome to My Page</p> 
         <!-- <a class="fa fa-linkedin fa-3x" href="https://www.linkedin.com/in/dimitri-efthimiou-72232119/"></a> -->
         <a class="fa fa-github fa-3x" href="https://github.com/dimtirie13" ></a>
 </div>
@@ -48,9 +53,9 @@
         <span><img src="static\images\me2.jpg" alt="" style="border-radius:50px; height: 310px; width: 250px;"></span>
     </div>
         <div class="col-sm-4">
-        <p>I descovered my passion for data science during my Head Coaching years. I decided to use basic statistics in order to give our team a compettive edge. 
+        <p>I descovered my passion for data science during my Head Coaching years by utilizing to use Statistical Analysis in order to give my team a compettive edge 
         After several successful seasons I decided to make a career change back into my original passion of Computer Science with a focus on Data Science.</p>
-        <h4 class="text-center" style="color:#f4511e">Purpose behind the website?</h4>
+        <h4 class="text-center" style="color:#f4511e">Purpose behind this website?</h4>
         <p>I want to combine most of projects in one place as a way to showcase what I have learned so far.</p>
     
 </div>
@@ -78,7 +83,13 @@
                     </div>
                     </div>
 
-                                      <!-- Container (Portfolio Section) -->
+
+
+
+
+
+
+ <!-- Container (Portfolio Section) -->
               <div id="portfolio" class="container-fluid text-center bg-grey">
                     <div class="text-center">
                             <h2 style="color:#f4511e">PORTFOLIO</h2>
@@ -94,7 +105,7 @@
        
                                 </div>
                                 <div class="panel-footer">
-                                  <h4>scikit-learn,Tensorflow</h4>
+                                  <h4>scikit-learn,Pandas,Numpy,</h4>
                                   <button class="btn btn-lg">Project 1</button>
                                   <button class="btn btn-lg">Project 2</button>
                                 </div>
@@ -111,7 +122,7 @@
                                 <div class="panel-footer">
                                   <h4>plotly/dash</h4>
                                  
-                                  <a href='/dash'><input type='button' value='MLB'></a>
+                                  <a href='/dash'><input type='button'class="btn btn-lg" value='MLB'></a>
                                   <button class="btn btn-lg">Project 2</button>
                                 </div>
                               </div>      
@@ -125,7 +136,7 @@
                    
                                 </div>
                                 <div class="panel-footer">
-                                  <h4>Django, Python, Javascript</h4>
+                                  <h4>Find explanations of machine learning models</h4>
                                   <button class="btn btn-lg">Project 1</button>
                                   <button class="btn btn-lg">Project 2</button>
                                 </div>
@@ -133,6 +144,79 @@
                             </div>    
                           </div>
                         </div>
+
+
+
+          
+                        <div id="resume" class=" container-fluid carousel slide text-center" data-ride="carousel">
+                          <h2>My Resume</h2>
+                          <!-- Indicators -->
+                          <ol class="carousel-indicators">
+                            <li data-target="#resume" data-slide-to="0" class="active"></li>
+                            <li data-target="#resume" data-slide-to="1"></li>
+                            <li data-target="#resume" data-slide-to="2"></li>
+                            <li data-target="#resume" data-slide-to="3"></li>
+                          </ol>
+                      
+                          <!-- Wrapper for slides -->
+                          <div class="carousel-inner slideanim" role="listbox">
+                              <div class="item active">
+                                  <h4 style="color:#f4511e;">Data Analyst<br><span>Party Expert Group</span></h4>
+                                  <div style="color:black; font-size: 20px">
+                                      <p>Built a Descriptive analytics dashboard using plotly/Dash utilized by all company departments (warehouse, marketing, buying, merchandising) <p>
+                                      <p>Managed IoT Project for heatmapping, door counting, and pattern recognition/customer segmentation for all retail locations</p>
+                                      <p>Produced reports using SQL Server for the warehouse team in order to reduce work hours spent during Purchase Order allocation for back orders</p>
+                                      <p>Collaborated with the buying team to develop a plan in order to manage sell through rates and gain inventory control over 100K SKUs</p>
+                                      <p>Began plans for RFID inventory system implementation</p>
+                                     
+                                    </div>
+                                </div>
+                                
+                            <div class="item slideanim">
+                              <h4 style="color:#f4511e;">Teaching Assistant(Data Analytics)Trilogy Education Services<br><span>University of Miami</span></h4>
+                              <div style="color:black; font-size: 20px">
+                                <p>Assisting Students during lecture exercises, homework assignments and office hours in the following subjects: </p>
+                                  <p>Fundamental Statistics: Modeling, Forecasting <p>
+                                  <p>Front-End Development: HTML, CSS, Bootstrap, JavaScript, D3.js, Leaflet.js</p>
+                                  <p>Business Intelligence Software: Tableau</p>
+                                  <p>Python and API Interactions: pandas, numpy, matplotlib</p>
+                                  <p>Databases: MySQL, MongoDB, ETL</p>
+                                  <p>Data Science: Hadoop, Machine Learning</p>
+                                </div>
+                            </div>
+                            <div class="item slideanim">
+                              <h4 style="color:#f4511e;">Information security intern<br><span>State Street Bank & Trust</span></h4>
+                              <div style="color:black; font-size: 20px">
+                                <p>Created Pivot Tables in conjunction with other Excel functions to analyze compliance metrics worldwide</p>
+                                <p>Overlooked Risk Management profiles for Internal applications including database management</p>
+                                <p>Presented findings and data to senior management in order to improve strategies and operations</p>
+                                <p>Proposed system solutions to ensure compliance guidelines are met</p>
+                                <p>Coordinated with Senior Management to align with all areas were information and processes might be at risk</p>
+                                <p>Generated Policies & Procedures manuals upon request</p>
+                              </div>
+                            </div>
+                            <div class="item slideanim">
+                              <h4 style="color:#f4511e;">Account Manager<br><span>Spectec Gmbh</span></h4>
+                              <div style="color:black; font-size: 20px">
+                              <p>Establish the Marketing & Sales Strategy for new products</p>
+                              <p>Develop new client relationships in the industry</p>
+                              <p>Offer Technical support to all US based clients</p>
+                              <p>Provide live Demos as well as initial Database build up</p>
+                            </div>
+                            </div>
+                          </div>
+                      
+                          <!-- Left and right controls -->
+                          <a class="left carousel-control" href="#resume" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="right carousel-control" href="#resume" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </div>
+                      </div>
 
 </body>
 
