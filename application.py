@@ -141,7 +141,7 @@ app.layout = html.Div(children=[
 ############### DATA FRAME ####################
 
     html.Div([
-        html.h3('Fixtures & Results'),
+        html.H3('Fixtures & Results'),
             dash_table.DataTable(
                     id='table',
                     columns=[{"name": i, "id": i} for i in df.columns],
