@@ -4,10 +4,13 @@ data = pd.read_csv('mlb_2016.csv')
 df = data.drop(columns='Unnamed: 0')
 df = df.dropna()
 
-matches = df.shape[0]
-features = df.shape[1]-1
-home_wins = len(df[df.home_team_outcome == 'Win'])
-home_rate = home_wins / matches *100
+####
+# Date Column Datatype Conversion 
+df.date = df.date.astype('datetime64[ns]')
+
+
+df['Week'] = df.date.dt.week
+
 
 home_teams = df.groupby('home_team').agg({'away_team_errors':'sum','away_team_hits':'sum','away_team_runs':'sum','home_team_errors':'sum',
                                           'home_team_hits':'sum','home_team_runs':'sum','total_runs':'sum','game_hours_dec':'sum','home_team_win':'sum',
@@ -22,4 +25,6 @@ away_teams = df.groupby('away_team').agg({'away_team_errors':'sum','away_team_hi
                                                                                           'temperature':'avg_temp','wind_speed':'avg_wind_speed',
                                                                                           'game_hours_dec':'avg_game_duration'})
 
+
+####################################################################
 
