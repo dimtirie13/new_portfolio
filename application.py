@@ -25,7 +25,9 @@ application = Flask(__name__)
 def index():
     return render_template("index.html")
 
-
+@application.route('/blog')
+def blog():
+    return render_template("blog.html")
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets, server=application, routes_pathname_prefix='/dash/')
 app.css.config.serve_locally = True
