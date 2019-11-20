@@ -465,5 +465,22 @@ visibility: visible;
   }
 
 
+  /* zooming for the certificates */
+
+  
+  .zoom {
+    padding: 0px;
+    transition: transform .2s;
+    width: 150px;
+    height: 120px;
+    margin: 0 auto;
+  }
+  
+  .zoom:hover {
+    -ms-transform: scale(2.3); /* IE 9 */
+    -webkit-transform: scale(2.3); /* Safari 3-8 */
+    transform: scale(2.3); 
+  }
+
 
 
