@@ -29,6 +29,11 @@ def index():
 def blog():
     return render_template("blog.html")
 
+@application.route('/blog/random_forest')
+def rf():
+    return render_template("rf.html")
+
+
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets, server=application, routes_pathname_prefix='/dash/')
 app.css.config.serve_locally = True
 app.config['suppress_callback_exceptions'] = True
