@@ -37,21 +37,38 @@ and is wrapped around the whole page content, except for the footer in this exam
             of the image quickly and then beeing able to distinguish it from others. 
             <br>
             <br>
-            Convolutional layers accomplish this by splitting the workload amongst Kernels or Filters which are responsible to only look for patterns in  pixels in their assigned regions. These filters iterate through the image and they extract important features. Following the Convolutional layer is the pooling layer which consist of 
-            two different types, MaxPooling and Average Pooling. These layers reduce the dimensionality and noise when combined with Convolutional layers. The next and final step is a Fully connected Flatten MLP layer used for classification purposes. This layer is responsible for learning non-linear combinations fo fetures by first
+            Convolutional layers accomplish this by scalling down the image while maintaining the import features through the use of filters which are responsible to only look for patterns in  pixels in their assigned regions. These filters iterate through the image and they extract important features. Following the Convolutional layer is the pooling layer which consist of 
+            two different types, MaxPooling and Average Pooling. These layers reduce the dimensionality and noise when combined with Convolutional layers. The next and final step is a Fully connected Flatten MLP layer used for classification purposes. This layer is responsible for learning non-linear combinations of fetures by first
             turning the output into a vector as it cannot handle matrices and begin training with a Feed Forward and Back Propagation utilizaing output functions such as Softmax to predict results.
             
-            
+            <img class="center" src="\static\images\full_cnn.jpg" alt="" height="200px" width="400">
             <h4 style="text-align: center;">Difference between CNN and MLP</h4>
                 Before focusing only on the difference it’s important to note that they are both composed of a stack of layers and they utilize the same loss functions.
                 </p>
-                <img src="\static\images\flatten.jpg" alt="" height="200px" width="350"> <img src="\static\images\mlp_cnn_comp.PNG" alt="" height="300px" width="450"><img  src="\static\images\cnn.jpg" alt="" height="200px" width="350">  
+                <img src="\static\images\flatten.jpg" alt="" height="200px" width="350"> <img src="\static\images\mlp_cnn_comp.PNG" alt="" height="300px" width="450"><img  src="\static\images\cnn.jpg" alt="" height="200px" width="350" style="padding-left: 50px;">  
             
-                <h4>FILTERS</h4>    
+                <h4 style="text-align: center;">FILTERS</h4>    
             <p>
-                    when it’s used after the Convoluted layer it uses fewer parameters, less prone to overfitting, and it understands how to better extract patterns in image data. </p>
+                  Filters the region(pixels)of the image they are responsible for from left to right while extracting important features from the image such as the edges. The way which they are able to extract these features is through the tunning of their Hyper Parameters <b>Striding</b> and <b>Padding. Striding</b> corresponds to the 
+                amount of pixels the filter slides over the image. if Stride is set to 1(purple) means the filter is sliding over one pixel at a time which makes the convolutional layer roughly the same height and width as the input image. if Stride is set to 2(yellow), the CNN layer will be roughly half the size of the image. 
+                Roughly is mentioned becomes it depends on what we do with the edges. </p>
+                <img src="\static\images\stride1.jpg" alt="" height="200px" width="350" style="padding-right: 40px;"> <img src="\static\images\stride2.jpg" alt="" height="200px" width="350">
+                <br>
+                <h4 style="text-align: center;">Padding</h4>
+                <p>Padding is a way of avoiding shrinking outputs and losing information on corners of the image. This issue occurs because in many cases the middle pixel of the filter will get covered more often than the edges. Padding simply allows us to add an extra layer (of 0's) at the border of the image. You can do so by setting padding to "Valid"
+                    for 0's and "Same" to ignore. </p>
+                    <img src="\static\images\paddingbad.jpg" alt="" height="200px" width="350" style="padding-right: 40px;"> <img src="\static\images\paddinggood.jpg" alt="" height="200px" width="350">    
+                <h4>Pooling Layers</h4>
+                <p>These layers are responsible for reducing the dimensionality and suppresing the noise in a complex data set where a large number of parameters is used. They take the convolutional layer as input and they are made up of two types <b>MaxPooling</b> and <b>GlobalAveragePooling.</b>
+                    <b> MaxPooling,</b> takes a stack of feature maps as input(3 in this case) and creates a new window size and stride (let's use 2x2, and stride = 2). In order to construct the layer we work with each feature map separately. We start with the top left of the image in a 2x2 and take the maximum of the pixels contained in the window(9 in this case)
+                    and repeat this step for the entire stack to make a new reduced(half of original). The new stack has the same number of feature maps. <b>GlobalAveragePooling,</b> we do NOT need to specify the window size or stride as part of what makes it more extreme than maxpooling.
+                    It takes a stack of feature maps and computes the average value of nodes for each map in the stack as each feature map gets reduced to a single value. Then, it takes a 3D array and turns it into a vector, in this case a vector with 3 entries</p>
+                
+                    <img src="\static\images\maxpool.jpg" alt="" height="200px" width="350" style="padding-right: 40px;"> <img src="\static\images\global averagepool.jpg" alt="" height="200px" width="350">  
+                
+        
                     
-            <h5>FILTERS</h5>
+          
 
                         </div>
         </div>
