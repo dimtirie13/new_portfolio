@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="\static\css\mystyle.css">
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
@@ -15,29 +16,149 @@ and is wrapped around the whole page content, except for the footer in this exam
 <div class="w3-content" style="max-width:1400px">
 
 <!-- Header -->
-<header class="w3-container w3-center w3-padding-32"> 
-  <h1><b>Random Forest</b></h1>
-  <img src="static\images\funny robot.gif" alt="cnn" style="width: 200px; height:100px">
-  <p>by Dimitri Efthimiou</p>
+<header id ="rf-header"class="w3-container w3-center w3-padding-32"> 
+   
+  <h1 style="color: white;"><b>Random Forest</b></h1>
+  <!-- <img src="\static\images\randon_forest.jpg" alt="forest image" style="width: 200px; height:100px"> -->
+  <p style="color: white;">by Dimitri Efthimiou</p>
 </header>
 
 <!-- Grid -->
 <div class="w3-row">
 
 <!-- Blog entries -->
-<div class="w3-col l8 s12">
+<div class="w3-white w3-col l12 s12" style="padding-inline-end: 50px; padding-inline-start: 50px;">
     <!-- Blog entry -->
-    <div class="w3-card-4 w3-margin w3-white">
-        <h4>TEST page </h4>
-            </div>
+    <div>
+            <!-- class="w3-card-4 w3-margin w3-white text" -->
+        <h4 align="center">Introduction </h4>
+        <p>Random forest is one of the most popular Supervised learning Algorithms and in this article,  I will be explaining how this algorithm works under the hood. Random Forest is made up from a bunch of trees(Decision Trees), 
+            with each tree making a prediction based on learning from a  randomly chosen set of features. The algorithm gets its name by looking at the results from all trees and then selecting the most popular vote. For example, you have a question and, 
+            in this case, you are trying to classify something such as is this car yellow or green? In order to get an answer, you ask your ten friends(the trees) and based on their response you make your conclusion. If 7 of your friends say the car is yellow and 3 say its green,
+             then you conclude that the car is yellow. </p>
+             <p>In order to fully understand Random Forest, we first must understand the Decision Trees algorithm however, in order to understand Decision Trees, we need to go over Entropy and Information Gain.
+                But how do your friends know where to make that split? This is where Entropy comes. 
+                    </p>
+        <h4 align="center"> <b>Entropy</b></h4>
+        <img class="center"src="\static\images\entropy_eq.PNG" alt="entropy formula">
+                    <p>What is it?
+                            The negative sum of the probabilities times the log base 2 of the probabilities.
+                            Entropy comes from physics and it’s used in order to describe how quickly particles inside an object are moving. Let’s think of example below
+                            </p>
+         <img  src="\static\images\icecave.jpg" alt="Ice Cave" height="150px" width="300px" style="padding-right: 40px;"> <img src="\static\images\ocean.jpg" alt="Ocean" height="150px" width="300px"style="padding-right: 40px;align-content: center;"><img src="\static\images\bigsteam.jpg" alt="steam"height="150px" width="300px"style="padding-left: 0px;"></div>
+            <p>Ice will have low entropy because the particles inside are moving slowly vs steam which has high entropy. Water would be the middle ground in this case.  How does this relate to a Decision Tree?
+                    Well if I have a large variety of instances in a column that means there is high entropy. High entropy means Low Information Gain so the tree can make a split. Wait, WHAT?!? Information Gain? Hold on to that thought. 
+            </p>
+            <p>
+                    Lets start off with an example of circles and trianges in three buckets. The first bucket has 4 cirlces, the second 3 cirlces and 1 triangle and the third 2 of each. Now, you have four chances to grab an item from each bucket and after each time you must return the item you grabbed back into the bucket(making these events independent).
+                     What would the probability of each event be? (Please Note: I am NOT an artist!)
+            </p>
+            <img class="center" src="\static\images\rf_event_prob.PNG" alt="" height="150px" width="500px">
+            <p>
+            Now the probability is the Product of these events(because they are independent due to the fact each object gets replaced) 
+            </p>
+            <img class="center" src="\static\images\bucket_prob.PNG" alt="" height="150px" width="500px">
+
+            <p>
+                    Multiplication however, will not be a good choice with such small numbers because the more events we have(additional shapes) the smaller the overall product will get. For example,
+                     if there is a change in these numbers it might not have the sagnificant affect in the overall Probability as it should.
+                     what can we do to fix that?
+                    We will use Sums instead of products, and how are we going to convert our products into sums?   Let’s bring the logarithm function to the rescue, Log base 2 to be exact and that’s due to information theory which we won’t cover in this article. In order to avoid negative numbers we will take the -log2 because numbers between 0 and 1 have negative logarithms and we would like to work with positive numbers.
+                    The logarithm function has the following identity:
+
+            </p>
+            <h6 style="text-align: center;"><b>log(ab) = log(a) + log(b)</b></h6>
+            <h6 style="text-align: center;">The logarithm of a product is the sum of the logarithms: 
+            -log2(1) = 0   -log2(.75) = 4.15   -log2(.25)=2   -log2(.5) = 1</h6>
+            <img class="center"src="\static\images\log_new.PNG" alt=""height="150px" width="500px">
+            <p>Entropy is just the average of those values so 
+                    Bucket A: 0 Bucket B: .81 and Bucket C: 1.
+                    Another way to think of entropy is you want to know what is theaverage number of questions that you need to ask in order to get to the answer. Think of it as the number of layers of splits that need to be made.
+                    Let’s look at the following example
+
+
+                    </p>
+
+            <h5 style="text-align: center;">Inorformation Gain</h5>
+           <p> Remeber Information gain from earlier? information gain is the difference between the Entropy(parent) - avg(children entropy).
+             The Decision Tree algorithm will continue to make splits until the Entropy is 0 and the information gain is 1.
+             
+            </p>
+
+            <h5 style="text-align: center;">Hyper Parameters</h5>
+            <li>Maximum Depth: largest possible length between root and leaf. represented by 'k' and can have at most 2k leaves.</li>
+            <li>Minimum number of samples to split: a node must have min_samples_split in order to be large enough to split.
+                 if the node has < min_samples_split it won't split and the process stops. ATTENTION min_sample split doesn't control the minimum size of leaves. </li>
+            <li>Minimum number of samples per leaf: when splitting a node one leaf can have 99 and the other 1.  specify a number int or float to represent the minimum percentage allowed in a leaf. .1 = 10%. 
+                if leaf has fewer samples algo will NOT ALLOW that split and it will perform a split on the same feature at a different threshold that does satisfy min_samples_leaf.</li>
+                <br>
+                <p>Things to be aware of during parameter tunning:</p>
+                <li>Large Depth = Overfitting</li>
+                <li>Small Depth = underfitting</li>
+                <li>Small Minimum Sample Split = overfitting</li>
+                <li>Large Minimum Sample Split = underfitting</li>
+            <h5 style="text-align: center;">Build a Model</h5>
+            <figure>
+                    <figcaption>The python code below is a basic template for a Decission Trees Implementation</figcaption>
+                    <pre>
+                      <code>
+                            # build a model
+                            from sklearn.tree import DecisionTreeClassifier
+                            from sklearn.metrics import accuracy_score
+                            import pandas as pd
+                            import numpy as np
+                            
+                            # Read the data.
+                            data = np.asarray(pd.read_csv('data.csv', header=None))
+                            # Assign the features to the variable X, and the labels to the variable y.
+                            X = data[:,0:2]
+                            y = data[:,2]
+                            
+                            # from sklearn.model_selection import train_test_split
+                            X_train, X_test, y_train, y_test = train_test_split(features, outcomes, test_size=0.2, random_state=42)
+                            
+                            
+                            model = DecisionTreeClassifier()
+                            # can also adjust parameters
+                            model = DecisionTreeClassifier(max_depth=6, min_samples_leaf=6, min_samples_split=10)
+                            
+                            # Fit the model to the data
+                            # fitting the model means finding the best tree that fits the training data. 
+                            model.fit(X,y)
+                            model.fit(X_train, y_train)
+                            
+                            # Predict using the model
+                            y_pred = model.predict(X)
+                            
+                            
+                            # Making predictions
+                            y_train_pred = model.predict(X_train)
+                            y_test_pred = model.predict(X_test)
+                            
+                            
+                            # Calculate the accuracy
+                            from sklearn.metrics import accuracy_score
+                            train_accuracy = accuracy_score(y_train, y_train_pred)
+                            test_accuracy = accuracy_score(y_test, y_test_pred)
+                            print('The training accuracy is', train_accuracy)
+                            print('The test accuracy is', test_accuracy)
+                            
+                            # Calculate the accuracy of the model
+                            acc = accuracy_score(y, y_pred)
+                            
+                      </code>
+                    </pre>
+                  </figure>
+
+            
+                        </div>
         </div>
     </div>
 </div>
 <!-- Footer -->
 <footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
-  <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
-  <button class="w3-button w3-black w3-padding-large w3-margin-bottom">Next »</button>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+<a href='/blog'><input type='button'class="w3-button w3-padding-large w3-white w3-border" value='Return to Home Page'></a>
+
 </footer>
 
 </body>
