@@ -36,8 +36,9 @@ and is wrapped around the whole page content, except for the footer in this exam
             with each tree making a prediction based on learning from a  randomly chosen set of features. The algorithm gets its name by looking at the results from all trees and then selecting the most popular vote. For example, you have a question and, 
             in this case, you are trying to classify something such as is this car yellow or green? In order to get an answer, you ask your ten friends(the trees) and based on their response you make your conclusion. If 7 of your friends say the car is yellow and 3 say its green,
              then you conclude that the car is yellow. </p>
+
              <p>In order to fully understand Random Forest, we first must understand the Decision Trees algorithm however, in order to understand Decision Trees, we need to go over Entropy and Information Gain.
-                But how do your friends know where to make that split? This is where Entropy comes. 
+          
                     </p>
         <h4 align="center"> <b>Entropy</b></h4>
         <img class="center"src="\static\images\entropy_eq.PNG" alt="entropy formula">
@@ -73,17 +74,22 @@ and is wrapped around the whole page content, except for the footer in this exam
             <img class="center"src="\static\images\log_new.PNG" alt=""height="150px" width="500px">
             <p>Entropy is just the average of those values so 
                     Bucket A: 0 Bucket B: .81 and Bucket C: 1.
-                    Another way to think of entropy is you want to know what is theaverage number of questions that you need to ask in order to get to the answer. Think of it as the number of layers of splits that need to be made.
-                    Let’s look at the following example
-
-
+                    Another way to think of entropy is what is the average number of questions I can ask in order to get to my result. Think of it as the number of layers of splits that I need in order to get to my
+                    prediction. Having an Entropy of 1 means I can ask one question on average and get to me result. This statement holds true in the Bucket C example where I have an Entropy of 1 in Circle, Triangle, Circle, Triangle. This is a binary 
+                    problem so it can be solved with one question such as "Is it Circle or Triangle?". What would happen if we had more variables to choose from? How about four different colors?
+                    RRBBGGYY. The Probability of each color is 1/4 and the entropy comes out to 2. Let's confirm the previous statement by looking at the figure below. You will notice that if you multiply the number of 
+                    questions/number of split layers in the diagram with each probability and sum the results you will get to the entropy number. 
                     </p>
+                    <img class="center" src="\static\images\multivariableentropy.PNG" alt="" height="170px" width="600px">
+
 
             <h5 style="text-align: center;">Inorformation Gain</h5>
            <p> Remeber Information gain from earlier? information gain is the difference between the Entropy(parent) - avg(children entropy).
-             The Decision Tree algorithm will continue to make splits until the Entropy is 0 and the information gain is 1.
+             The Decision Tree algorithm will continue to make splits until the Entropy is 0 and the information gain is 1. In order to get a visual understanding of whats happening you can take a look at the 2D graph below. 
+             Each time a Decission Tree takes a step/makes a split from the parent node into children, a line gets drawn in the graph(the yellow ones). As the splits continue the more lines get drawn until you end up in an area where the points are similar(the entropy is as low as possible).
              
             </p>
+            <img  src="\static\images\info_gain_graph.PNG" alt="" height="200px" width="400px"> <img src="\static\images\decision_split_process.PNG" alt="" height="200px" width="400px">
 
             <h5 style="text-align: center;">Hyper Parameters</h5>
             <li>Maximum Depth: largest possible length between root and leaf. represented by 'k' and can have at most 2k leaves.</li>

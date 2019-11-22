@@ -33,6 +33,10 @@ def blog():
 def rf():
     return render_template("rf.html")
 
+@application.route('/blog/cnn')
+def cnn():
+    return  render_template("cnn.html")
+
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets, server=application, routes_pathname_prefix='/dash/')
 app.css.config.serve_locally = True
